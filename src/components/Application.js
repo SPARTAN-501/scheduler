@@ -118,16 +118,41 @@ export default function Application(props) {
       [id]: appointment
     };
 
-    axios.put("/api/appointments/:id")
-    .then((interview) => console.log(interview))
+    /*
+    1. Create a new appointment object
+    2. Update appointments object with newly made appointment
+    3. Make a request to /api/appointments/:id to update database with interview data
+    3.5 Method: PUT, need interview object, id
+    . When the response comes back, update state with setState
+    . Transition to SHOW
+    */
+    const path = `/api/appointments/${id}`
+    
+    return axios.put(path, {interview})
+    .then(() => setState({...state, appointments}));
 
+
+    /*
     return setState({
       ...state,
       appointments
     });
+    */
+  }
 
-    
+  const cancelInterview = function (id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
 
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios.delete(`/api/appointments/${id}`, {interview})
+    .then(() => setState(...state, appointments));
   }
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
