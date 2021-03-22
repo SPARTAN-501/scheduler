@@ -21,7 +21,7 @@ export default function Show(props) {
             alt="Edit"
           />
           <img
-            className="appointment__actions-button" onClick={props.onDelete}
+            className="appointment__actions-button" onClick={(event) => props.onDelete(event)}
             src="images/trash.png"
             alt="Delete"
           />
