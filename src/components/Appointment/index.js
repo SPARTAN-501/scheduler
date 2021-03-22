@@ -22,7 +22,7 @@ import Status from "components/Appointment/Status.js"
 import Confirm from "components/Appointment/Confirm.js"
 
 export default function Appointment(props) {
-  // console.log(props);
+  console.log(props);
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -38,7 +38,7 @@ export default function Appointment(props) {
   );
 
   function save(name, interviewer) {
-    console.log("onSave", name, interviewer);
+    // console.log("onSave", name, interviewer);
     const interview = {
       student: name,
       interviewer
@@ -55,7 +55,7 @@ export default function Appointment(props) {
     props
       .cancelInterview(props.id)
       .then(() => {
-        console.log("Destroy");
+        // console.log("Destroy");
         transition(EMPTY)
       })
       .catch(error => transition(ERROR_DELETE, true));
@@ -70,6 +70,7 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onEdit={() => transition(EDIT)}
           onDelete={() => transition(CONFIRM)}
           appointmentID={props.id}
           interview={props.interview}
@@ -77,6 +78,15 @@ export default function Appointment(props) {
       )}
       {mode === CREATE && (
         <Form 
+          interviewers={props.interviewers}
+          onCancel={back}
+          onSave={save}
+        />
+      )}
+      {mode === EDIT && (
+        <Form 
+          name={props.interview.student}
+          interviewer={props.interview.interviewer.id}
           interviewers={props.interviewers}
           onCancel={back}
           onSave={save}

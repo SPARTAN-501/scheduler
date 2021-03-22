@@ -4,11 +4,11 @@ const axios = require('axios').default;
 
 export function getAppointmentsForDay(state, day) {
   // 1. Get appointment array for day
-  console.log(state);
+  // console.log(state);
   const foundDay = state.days.find((value) => {
     return value.name === day;
   });
-  console.log(foundDay);
+  // console.log(foundDay);
   if (!foundDay) {
     return [];
   }
@@ -57,7 +57,7 @@ export function getInterviewersForDay(state, day) {
     return [];
   }
   
-  console.log(state.days[dayID].appointments);
+  // console.log(state.days[dayID].appointments);
   let interviewerKeys = state.days[dayID].appointments;
   let interviewersForDay = [];
   for (let i = 0; i < interviewerKeys.length; i++) {
