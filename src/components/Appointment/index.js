@@ -20,6 +20,7 @@ import Show from "components/Appointment/Show.js";
 import Form from "components/Appointment/Form.js"
 import Status from "components/Appointment/Status.js"
 import Confirm from "components/Appointment/Confirm.js"
+import Error from "components/Appointment/Error.js"
 
 export default function Appointment(props) {
   console.log(props);
@@ -100,5 +101,17 @@ export default function Appointment(props) {
         />
       )}
       {mode === DELETING && <Status message="Deleting"/>}
+      {mode === ERROR_SAVE && (
+        <Error
+          message="Could not save appointment."
+          onClose={back}
+        />
+      )}
+      {mode === ERROR_DELETE && (
+        <Error
+          message="Could not cancel appointment."
+          onClose={back}
+        />
+      )}
     </article>)
 }
