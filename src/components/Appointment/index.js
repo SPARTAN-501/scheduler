@@ -49,7 +49,7 @@ export default function Appointment(props) {
       .bookInterview(props.id, interview)
       .then(() => {
         transition(SHOW);
-        window.location.reload();
+        // window.location.reload(); // Bypassed the problem
       })
       .catch(error => transition(ERROR_SAVE, true));
   }
@@ -61,7 +61,7 @@ export default function Appointment(props) {
       .then(() => {
         // console.log("Destroy");
         transition(EMPTY);
-        window.location.reload();
+        // window.location.reload(); // Bypassed the problem
       })
       .catch(error => transition(ERROR_DELETE, true));
   }

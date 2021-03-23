@@ -36,6 +36,36 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
+  const getSpotsCount = function(dayObj, appointments) {
+    let count = 0
+  
+    for (const id of dayObj.appointments) {
+      const appointment = appointments[id];
+      if (!appointment.interview) {
+        count++;
+      }
+    }
+  
+    return count;
+  }
+
+  const updateSpots = function (dayName, days, appointments) {
+
+    const day = days.find(item => item.name === dayName);
+  
+    const spots = getSpotsCount(day, appointments);
+  
+    const newArray = days.map(item => {
+      if (item.name === dayName) {
+        return { ...item, spots: spots}
+      }
+      return item;
+    })
+    console.log(`newArray: ${newArray}`);
+    return newArray;
+  
+  };
+
   const setDay = day => setState({ ...state, day });
   // const setDays = (days) => setState(prev => ({ ...prev, days }));
 
@@ -62,10 +92,12 @@ export default function useApplicationData() {
     . Transition to SHOW
     */
     const path = `/api/appointments/${id}`
+    const spots = updateSpots(state.day, state.days, appointments);
     
-    return axios.put(path, {interview})
-    .then(() => setState({...state, appointments}));
-
+    return axios.put(path, appointment)
+    .then(() => {
+      setState({...state, appointments, days: spots})
+    });
 
     /*
     return setState({
@@ -88,10 +120,12 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    const spots = updateSpots(state.day, state.days, appointments);
+
     return axios.delete(`/api/appointments/${id}`)
     .then(() => {
-      console.log("Deleting");
-      setState({...state, appointments})
+      // console.log("Deleting");
+      setState({...state, appointments, days: spots})
     });
   }
 
