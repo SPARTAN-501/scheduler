@@ -3,6 +3,7 @@
 ## Setup
 
 Install dependencies with `npm install`.
+This app will be running on **http://localhost:8000** and it requires the scheduler-api to run correctly. The scheduler-api will be running on **http://localhost:8001**.
 
 ## Running Webpack Development Server
 
