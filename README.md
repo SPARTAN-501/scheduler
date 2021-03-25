@@ -22,3 +22,10 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Screenshots
+!["Appointments"](https://github.com/luke-yin/scheduler/blob/master/docs/appointments.jpeg?raw=true)
+
+!["Appointment form"](https://github.com/luke-yin/scheduler/blob/master/docs/appointment-form.jpeg?raw=true)
+
+!["Deleting an appointment"](https://github.com/luke-yin/scheduler/blob/master/docs/appointment-delete.jpeg?raw=true)
