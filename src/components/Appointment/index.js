@@ -39,7 +39,6 @@ export default function Appointment(props) {
   );
 
   function save(name, interviewer) {
-    // console.log("onSave", name, interviewer);
     const interview = {
       student: name,
       interviewer
@@ -49,7 +48,6 @@ export default function Appointment(props) {
       .bookInterview(props.id, interview)
       .then(() => {
         transition(SHOW);
-        // window.location.reload(); // Bypassed the problem
       })
       .catch(error => transition(ERROR_SAVE, true));
   }
@@ -59,9 +57,7 @@ export default function Appointment(props) {
     props
       .cancelInterview(props.id)
       .then(() => {
-        // console.log("Destroy");
         transition(EMPTY);
-        // window.location.reload(); // Bypassed the problem
       })
       .catch(error => transition(ERROR_DELETE, true));
   }

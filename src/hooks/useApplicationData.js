@@ -5,12 +5,6 @@ import axios from "axios";
 export default function useApplicationData() {
 
   useEffect(() => {
-    /*
-    axios.get("/api/appointments").then(response => {
-      console.log(response);
-      setDays(response.data);
-    })
-    */
     Promise.all([
       axios.get("/api/days"),
       axios.get("/api/appointments"),
@@ -67,10 +61,8 @@ export default function useApplicationData() {
   };
 
   const setDay = day => setState({ ...state, day });
-  // const setDays = (days) => setState(prev => ({ ...prev, days }));
 
   function bookInterview(id, interview) {
-    // console.log(id, interview);
     console.log("ID :", id, "INTERVIEW :", interview);
 
     const appointment = {
@@ -88,8 +80,8 @@ export default function useApplicationData() {
     2. Update appointments object with newly made appointment
     3. Make a request to /api/appointments/:id to update database with interview data
     3.5 Method: PUT, need interview object, id
-    . When the response comes back, update state with setState
-    . Transition to SHOW
+    4. When the response comes back, update state with setState
+    5. Transition to SHOW
     */
     const path = `/api/appointments/${id}`
     const spots = updateSpots(state.day, state.days, appointments);
@@ -99,12 +91,6 @@ export default function useApplicationData() {
       setState({...state, appointments, days: spots})
     });
 
-    /*
-    return setState({
-      ...state,
-      appointments
-    });
-    */
   }
 
   const cancelInterview = function (id) {
@@ -124,7 +110,6 @@ export default function useApplicationData() {
 
     return axios.delete(`/api/appointments/${id}`)
     .then(() => {
-      // console.log("Deleting");
       setState({...state, appointments, days: spots})
     });
   }

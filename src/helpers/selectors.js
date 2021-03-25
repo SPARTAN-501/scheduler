@@ -4,19 +4,17 @@ const axios = require('axios').default;
 
 export function getAppointmentsForDay(state, day) {
   // 1. Get appointment array for day
-  // console.log(state);
   const foundDay = state.days.find((value) => {
     return value.name === day;
   });
-  // console.log(foundDay);
   if (!foundDay) {
     return [];
   }
   // 2. Map appointment array from appointment IDs to appointment objects
   return foundDay.appointments.map((id) => {
+     // 3. Return transformed array
     return state.appointments[id];
   })
-  // 3. Return transformed array
 }
 
 export function getInterview(state, interview) {
@@ -30,7 +28,7 @@ export function getInterview(state, interview) {
 }
 
 export function getInterviewersForDay(state, day) {
-  
+  // Alternative method based on an earlier version of getAppointmentsForDay
   let dayID = 0;
   if (day === "Monday") {
     dayID = 0;
@@ -57,7 +55,6 @@ export function getInterviewersForDay(state, day) {
     return [];
   }
   
-  // console.log(state.days[dayID].appointments);
   let interviewerKeys = state.days[dayID].appointments;
   let interviewersForDay = [];
   for (let i = 0; i < interviewerKeys.length; i++) {

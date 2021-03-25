@@ -11,7 +11,6 @@ function InterviewerList(props) {
   const parsedInterviewers = props.interviewers.map(interviewer => {
     return (
       <InterviewerListItem 
-        // id={interviewer.id}
         key={interviewer.id}
         name={interviewer.name} 
         avatar={interviewer.avatar}
