@@ -17,7 +17,6 @@ export default function Form(props) {
   const reset = function () {
     setName("");
     setInterviewer(null);
-    // props.onCancel();
   }
 
   const cancel = function () {

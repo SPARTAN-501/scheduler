@@ -23,7 +23,6 @@ import Confirm from "components/Appointment/Confirm.js"
 import Error from "components/Appointment/Error.js"
 
 export default function Appointment(props) {
-  console.log(props);
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -104,7 +103,7 @@ export default function Appointment(props) {
       {mode === ERROR_SAVE && (
         <Error
           message="Could not save appointment."
-          onClose={back}
+          onClose={() => transition(CREATE)}
         />
       )}
       {mode === ERROR_DELETE && (

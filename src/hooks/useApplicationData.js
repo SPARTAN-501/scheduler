@@ -10,16 +10,8 @@ export default function useApplicationData() {
       axios.get("/api/appointments"),
       axios.get("/api/interviewers"),
     ]).then((all) => {
-      console.log(all[0]); // first
-      console.log(all[1]); // second
-      console.log(all[2]); // third
-    
       const [first, second, third] = all;
-    
-      console.log(first, second, third);
-
       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
-      console.log(state.interviewers);
     });
   }, [])
 
@@ -55,7 +47,6 @@ export default function useApplicationData() {
       }
       return item;
     })
-    console.log(`newArray: ${newArray}`);
     return newArray;
   
   };
@@ -63,8 +54,6 @@ export default function useApplicationData() {
   const setDay = day => setState({ ...state, day });
 
   function bookInterview(id, interview) {
-    console.log("ID :", id, "INTERVIEW :", interview);
-
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -94,8 +83,6 @@ export default function useApplicationData() {
   }
 
   const cancelInterview = function (id) {
-    console.log("cancelInterview");
-    console.log(`ID: ${id}`);
     const appointment = {
       ...state.appointments[id],
       interview: null
