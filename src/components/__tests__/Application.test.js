@@ -35,22 +35,6 @@ import Error from "components/Appointment/Error.js"
 afterEach(cleanup);
 
 describe("Application", () => {
-  /*
-  it("renders without crashing", () => {
-    render(<Application />);
-  });
-  */
-
-  /*
-  it("defaults to Monday and changes the schedule when a new day is selected", () => {
-    const { getByText } = render(<Application />);
-
-    return waitForElement(() => getByText("Monday")).then(() => {
-      fireEvent.click(getByText("Tuesday"));
-      expect(getByText("Leopold Silvers")).toBeInTheDocument();
-    });
-  });
-  */
 
   // New Async Test
   it("changes the schedule when a new day is selected", async () => {

@@ -7,7 +7,6 @@ import InterviewerListItem from "components/InterviewerListItem.js";
 var classNames = require('classnames');
 
 function InterviewerList(props) {
-  console.log(props);
   const parsedInterviewers = props.interviewers.map(interviewer => {
     return (
       <InterviewerListItem 

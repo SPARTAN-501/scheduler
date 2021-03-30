@@ -29,17 +29,11 @@ export default function Form(props) {
       setError("Student name cannot be blank");
       return;
     }
-    /*
-    if (interviewer === null) {
-      setError("Please select an interviewer");
-      return;
-    }
-    */
   
     setError("");
     props.onSave(name, interviewer);
   }
-  // console.log(props.interviewers);
+
   return (
     
     <main className="appointment__card appointment__card--create">
